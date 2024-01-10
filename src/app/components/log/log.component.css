@@ -1,0 +1,10 @@
+.scrollable-content {
+  max-height: 200px; /* 원하는 최대 높이로 조정하세요. */
+  overflow-y: auto;
+}
+.pre-scrollable {
+  white-space: no-wrap; /* 텍스트 줄 바꿈을 활성화합니다. */
+  overflow-x: auto;
+  max-width: 100%;
+}
+

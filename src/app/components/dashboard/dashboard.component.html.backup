@@ -1,0 +1,307 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="content-wrapper">
+      <div class="row">&nbsp;</div>
+
+      <!-- PROMETHEUS: CPU / MEMORY display: none;-->
+      <div class="row" id="prometheus-row-one" style="display: none;">
+        <div class="col-lg-6 col-6">
+          <!-- CPU GRAPH -->
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">CPU Usage</h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="position-relative"><div class="chartjs-size-monitor">
+              <div class="chart-container">
+                <canvas  id="CpuChart" >{{ cpuChart }}</canvas>
+              </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-6">
+          <!-- MEMORY GRAPH -->
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">Memory Usage <i>(GB)</i></h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="position-relative"><div class="chartjs-size-monitor">
+              <div class="chart-container">
+                <canvas  id="MemChart" >{{ memChart }}</canvas>
+              </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROMETHEUS: NET / STORAGE display: none;-->
+      <div class="row" id="prometheus-row-two" style="display: none;">
+        <div class="col-lg-6 col-6">
+          <!-- NET GRAPH -->
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">Network <i>Total Traffic (MB)</i></h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="position-relative"><div class="chartjs-size-monitor">
+              <div class="chart-container">
+                <canvas  id="NetChart" >{{ netChart }}</canvas>
+              </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-6">
+          <!-- STORAGE GRAPH -->
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">Storage <i>Total Traffic (MB)</i></h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="position-relative"><div class="chartjs-size-monitor">
+              <div class="chart-container">
+                <canvas  id="StgChart" >{{ stgChart }}</canvas>
+              </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIRST ROW -->
+      <div class="row" id="row-one">
+        <!-- NODE INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="node-info">{{this.nodeInfo.running}}/{{this.nodeInfo.total}}</h3>
+
+              <p>노드</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-hdd"></i>
+            </div>
+            <a routerLink="/nodelist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- VM INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="vm-info">{{this.vmInfo.running}}/{{this.vmInfo.total}}</h3>
+
+              <p>운용SW</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <a routerLink="/vmlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- VM INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <!-- 여기에 snapshot 개수 입력 (치훈 work) -->
+              <h3 id="vm-info">&nbsp;</h3>
+
+              <p>스냅샷</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <a routerLink="/snapshotvmlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- CPU INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <!-- 여기에 방화벽 vm 숫자 입력 (치훈 work)-->
+              <h3 id="cpu-info">&nbsp;</h3> 
+
+              <p>방화벽</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-cubes"></i>
+            </div>
+           <a href="http://10.12.206.141" target="_blank" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+       <!-- <div class="row" id="row-two"> -->
+        <!-- Disks -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="disk-info">{{this.discInfo}}</h3>
+
+              <p>Data Volumes</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <a routerLink="/dsklist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- VM Pools -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="pool-info">{{this.poolInfo.running}}/{{this.poolInfo.total}}</h3>
+
+              <p>VM Pools</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <a routerLink="/vmpools" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">&nbsp;</div> -->
+
+      <!-- SECOND ROW -->
+      <!-- <div class="row" id="row-two"> -->
+        <!-- CPU INFO -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="cpu-info">{{this.cpuInfo}}</h3>
+
+              <p>Total Node CPUs</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-flash"></i>
+            </div>
+            <a routerLink="/nodelist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- MEMORY INFO -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="mem-info">{{this.memInfo}} GB</h3>
+
+              <p>Total Node Memory</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-gear-b"></i>
+            </div>
+            <a routerLink="/nodelist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- STORAGE INFO -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="storage-info">{{this.storageInfo}} GB</h3>
+
+              <p>Total Node Storage</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-folder"></i>
+            </div>
+            <a routerLink="/nodelist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- NETWORK INFO -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="net-info">{{this.netInfo}}</h3>
+
+              <p>Available Networks</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <a routerLink="/netlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">&nbsp;</div> -->
+
+      <!-- THIRD ROW -->
+      <!-- <div class="row" id="row-three"> -->
+        <!-- CLUSTERS -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="cluster-info">{{this.kclusterInfo}}</h3>
+
+              <p>Clusters</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <a routerLink="/kcluster" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- AUTOSCALE -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="as-info">{{this.autoscaleInfo}}</h3>
+
+              <p>Scaling Groups</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-expand-alt"></i>
+            </div>
+            <a routerLink="/autoscale" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- INSTANCE TYPES -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="it-info">{{this.instanceTypesInfo}}</h3>
+
+              <p>Instance Types</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <a routerLink="/citlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+
+        <!-- SERVICES -->
+        <!-- <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="svc-info">{{this.loadBalancers}}</h3>
+
+              <p>Load Balancers</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <a routxerLink="/lblist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+      
+      </div>
+
+    </div>
+  </div>
+</div>
+

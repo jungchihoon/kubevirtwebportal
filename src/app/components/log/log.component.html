@@ -1,0 +1,31 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="content-wrapper">
+      &nbsp;<br>
+      <div class="card card-outline" *ngFor="let thisNode of nodeList">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-hdd"></i>
+            &nbsp;&nbsp;{{thisNode.name}}
+          </h3>
+        </div>
+        <div #container class="card-body">
+          <ul class="nav flex-column">
+           <h3> 스냅샷 로그 </h3>
+           <pre class = "scrollable-content" class = "pre-scrollable">
+              <ng-container *ngFor="let line of thisNode.logs; let i = index">{{ i >=0 ? '\n' : ''}}{{line}}</ng-container>
+           </pre>
+          </ul>
+        </div>
+        <div #container class="card-body">
+          <ul class="nav flex-column">
+           <h3> 운용SW 로그 </h3>
+           <pre class = "scrollable-content" class = "pre-scrollable">
+              <ng-container *ngFor="let nwline of thisNode.nwlogs; let i = index">{{ i >=0 ? '\n' : ''}}{{nwline}}</ng-container>
+           </pre>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

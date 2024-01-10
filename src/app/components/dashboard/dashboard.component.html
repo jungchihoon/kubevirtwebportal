@@ -1,0 +1,106 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="content-wrapper">
+      <div class="row">&nbsp;</div>
+
+      <!-- FIRST ROW -->
+      <div class="row" id="row-one">
+        <!-- NODE INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="node-info">{{this.nodeInfo.running}}/{{this.nodeInfo.total}}</h3>
+
+              <p>노드</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-hdd"></i>
+            </div>
+            <a routerLink="/nodelist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- VM INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="vm-info">{{this.vmInfo.running}}/{{this.vmInfo.total}}</h3>
+
+              <p>운용SW</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <a routerLink="/vmlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Disks -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="disk-info">&nbsp;</h3>
+
+              <p>스냅샷</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <a routerLink="/snapshotvmlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- VM Pools -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="pool-info">&nbsp;</h3>
+
+              <p>로그</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <a routerLink="/log" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">&nbsp;</div>
+
+      <!-- SECOND ROW -->
+      <div class="row" id="row-two">
+        <!-- CPU INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="cpu-info">&nbsp;</h3>
+
+              <p>방화벽1</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-cubes"></i>
+            </div>
+	    <a href="http://10.12.206.141" target="_blank" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- MEMORY INFO -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 id="mem-info">&nbsp;</h3>
+
+              <p>방화벽2</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-cubes"></i>
+            </div>
+	    <a href="http://10.12.206.142" target="_blank" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

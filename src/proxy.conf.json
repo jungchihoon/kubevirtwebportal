@@ -1,0 +1,11 @@
+{
+    "/slist/*": {
+        "target": "http://172.16.214.99:5000",
+        "secure": false,
+	"pathRewrite": {
+		"^/api": ""
+	},
+	"changeOrigin": false,
+        "logLevel": "debug"
+    }
+}
